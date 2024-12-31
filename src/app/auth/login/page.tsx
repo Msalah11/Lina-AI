@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import React from 'react'
 
-const SignInPage = () => {
+const LoginPage = () => {
   return (
     <div className="flex-1 py-36 md:px-16 w-full">
       <div className="flex flex-col h-full gap-3">
@@ -19,7 +19,7 @@ const SignInPage = () => {
                 Submit
               </Button>
               <p>
-                Don’t have an account?{' '}
+                Don&apos;t have an account? 
                 <Link
                   href="/auth/register"
                   className="font-bold"
@@ -35,4 +35,4 @@ const SignInPage = () => {
   )
 }
 
-export default SignInPage
+export default LoginPage

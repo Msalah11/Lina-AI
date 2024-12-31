@@ -44,10 +44,13 @@ export const useLoginForm = () => {
       } catch (error: any) {
         setIsSubmitting(false)
 
-        if (error.errors[0].code === 'form_password_incorrect') {
-          toast({
-            title: 'Error',
-            description: 'Incorrect email/password. Please try again.',
+        if (error.errors.length > 0) {
+          error.errors.forEach((err: any) => {
+            toast({
+              title: 'Error',
+              description: err.message,
+              variant: 'destructive',
+            })
           })
         }
       }
