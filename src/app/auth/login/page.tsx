@@ -1,8 +1,8 @@
-import LoginFormProvider from '@/components/forms/login/form-provider'
-import LoginForm from '@/components/forms/login/login-form'
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
-import React from 'react'
+import LoginFormProvider from "@/components/forms/login/form-provider";
+import LoginForm from "@/components/forms/login/login-form";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import React from "react";
 
 const LoginPage = () => {
   return (
@@ -12,19 +12,12 @@ const LoginPage = () => {
           <div className="flex flex-col gap-3">
             <LoginForm />
             <div className="w-full flex flex-col gap-3 items-center">
-              <Button
-                type="submit"
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 Submit
               </Button>
               <p>
-                Don&apos;t have an account? 
-                <Link
-                  href="/auth/register"
-                  className="font-bold"
-                >
-                  Create one
+                <Link href="/auth/register">
+                  Don&apos;t have an account? <span className="font-bold">Create one</span>
                 </Link>
               </p>
             </div>
@@ -32,7 +25,7 @@ const LoginPage = () => {
         </LoginFormProvider>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

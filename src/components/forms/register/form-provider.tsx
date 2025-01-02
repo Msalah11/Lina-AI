@@ -1,7 +1,7 @@
 "use client";
 import { Loader } from "@/components/loader";
 import { AuthContextProvider } from "@/context/use-auth-context";
-import { useRegisterForm } from "@/hooks/register/use-register";
+import { useRegisterForm } from "@/hooks/auth/use-register";
 import React from "react";
 import { FormProvider } from "react-hook-form";
 

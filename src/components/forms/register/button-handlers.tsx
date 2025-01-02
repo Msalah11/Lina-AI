@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useAuthContext } from "@/context/use-auth-context";
-import { useRegisterForm } from "@/hooks/register/use-register";
+import { useRegisterForm } from "@/hooks/auth/use-register";
 import Link from "next/link";
 import React from "react";
 import { useFormContext } from "react-hook-form";
@@ -25,9 +25,8 @@ const ButtonHandler = (props: Props) => {
           Create an account
         </Button>
         <p>
-          Already have an account?
-          <Link href="/auth/login" className="font-bold">
-            Login
+          <Link href="/auth/login">
+          Already have an account? <span className="font-bold">Login</span>
           </Link>
         </p>
       </div>
@@ -54,9 +53,8 @@ const ButtonHandler = (props: Props) => {
           Continue
         </Button>
         <p>
-          Already have an account?
-          <Link href="/auth/login" className="font-bold">
-            Login
+          <Link href="/auth/login">
+          Already have an account? <span className="font-bold">Login</span>
           </Link>
         </p>
       </div>
@@ -73,9 +71,8 @@ const ButtonHandler = (props: Props) => {
         Continue
       </Button>
       <p>
-        Already have an account?
-        <Link href="/auth/login" className="font-bold">
-          Login
+        <Link href="/auth/login">
+          Already have an account? <span className="font-bold">Login</span>
         </Link>
       </p>
     </div>
