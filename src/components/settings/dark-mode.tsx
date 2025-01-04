@@ -1,56 +1,60 @@
 'use client'
-import { useThemeMode } from '@/hooks/settings/use-settings'
+
+import { Card } from '@/components/ui/card'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import React from 'react'
-import Section from '../section-label'
-import { cn } from '@/lib/utils'
-import { SystemMode } from '../themes-placeholder/systemmode'
-import { LightMode } from '../themes-placeholder/lightmode'
-import { DarkMode } from '../themes-placeholder/darkmode'
 
-type Props = {}
-
-const DarkModetoggle = (props: Props) => {
-  const { setTheme, theme } = useThemeMode()
+const DarkModeToggle = () => {
+  const { theme, setTheme } = useTheme()
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-      <div className="lg:col-span-1">
-        <Section
-          label="Interface Theme"
-          message="Select or customize your UI theme "
-        />
+    <div className="space-y-6 mb-10">
+      <div className="space-y-1">
+        <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          Appearance
+        </h3>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Customize your interface theme
+        </p>
       </div>
-      <div className="lg:col-span-4 flex lg:flex-row flex-col items-start gap-5">
-        <div
-          className={cn(
-            'rounded-2xl overflow-hidden cursor-pointer border-4 border-transparent',
-            theme == 'system' && 'border-primary'
-          )}
-          onClick={() => setTheme('system')}
-        >
-          <SystemMode />
+
+      <Card className="p-6">
+        <div className="flex justify-between items-center">
+          <div className="space-y-0.5">
+            <h4 className="font-medium text-gray-900 dark:text-gray-100">Theme</h4>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Choose between light and dark theme
+            </p>
+          </div>
+          <div className="flex space-x-2">
+            <button
+              onClick={() => setTheme('light')}
+              className={`p-2 rounded-lg transition-colors ${
+                theme === 'light'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800'
+              }`}
+              aria-label="Light Mode"
+            >
+              <Sun className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => setTheme('dark')}
+              className={`p-2 rounded-lg transition-colors ${
+                theme === 'dark'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800'
+              }`}
+              aria-label="Dark Mode"
+            >
+              <Moon className="h-5 w-5" />
+            </button>
+          </div>
         </div>
-        <div
-          className={cn(
-            'rounded-2xl overflow-hidden cursor-pointer border-4 border-transparent',
-            theme == 'light' && 'border-primary'
-          )}
-          onClick={() => setTheme('light')}
-        >
-          <LightMode />
-        </div>
-        <div
-          className={cn(
-            'rounded-2xl overflow-hidden cursor-pointer border-4 border-transparent',
-            theme == 'dark' && 'border-primary'
-          )}
-          onClick={() => setTheme('dark')}
-        >
-          <DarkMode />
-        </div>
-      </div>
+      </Card>
     </div>
   )
 }
 
-export default DarkModetoggle
+export default DarkModeToggle

@@ -7,6 +7,8 @@ import { pricingCards } from '@/constants/landing'
 import Modal from '../modal'
 import SubscriptionForm from '../forms/settings/subscription-form'
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { CreditCard } from 'lucide-react'
 
 type Props = {}
 
@@ -19,57 +21,63 @@ const BillingSettings = async (props: Props) => {
 
   console.log(planFeatures)
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-      <div className="lg:col-span-1">
-        <Section
-          label="Billing settings"
-          message="Add payment information, upgrade and modify your plan."
-        />
-      </div>
-      <div className="lg:col-span-2 flex justify-start lg:justify-center ">
-        <Modal
-          title="Choose A Plan"
-          description="Tell us about yourself! What do you do? Let’s tailor your experience so it best suits you."
-          trigger={
-            plan && plan === 'STANDARD' ? (
-              <Card className="border-dashed bg-cream border-gray-400 w-full cursor-pointer h-[270px] flex justify-center items-center">
-                <CardContent className="flex gap-2 items-center">
-                  <div className="rounded-full border-2 p-1">
-                    <Plus className="text-gray-400" />
-                  </div>
-                  <CardDescription className="font-semibold">
-                    Upgrade Plan
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            ) : (
-              <Image
-                src="/images/creditcard.png"
-                width={400}
-                height={400}
-                alt="image"
-              />
-            )
-          }
-        >
-          <SubscriptionForm plan={plan!} />
-        </Modal>
-      </div>
-      <div className="lg:col-span-2">
-        <h3 className="text-xl font-semibold mb-2">Current Plan</h3>
-        <p className="text-sm font-semibold">{plan}</p>
-        <div className="flex gap-2 flex-col mt-2">
-          {planFeatures.map((feature) => (
-            <div
-              key={feature}
-              className="flex gap-2"
-            >
-              <CheckCircle2 className="text-muted-foreground" />
-              <p className="text-muted-foreground">{feature}</p>
-            </div>
-          ))}
+    <div className="space-y-6 mb-10">
+      <div className="flex items-center justify-between">
+        <div className="space-y-1">
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+            Billing & Subscription
+          </h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Manage your billing information and subscription plan
+          </p>
         </div>
+        <Button variant="outline" size="sm">
+          <CreditCard className="h-4 w-4 mr-2" />
+          Manage Billing
+        </Button>
       </div>
+
+      <Card className="p-6">
+        <div className="space-y-4">
+          <div className="flex justify-between items-center pb-4 border-b border-gray-200 dark:border-gray-700">
+            <div>
+              <h4 className="font-medium text-gray-900 dark:text-gray-100">Current Plan</h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{plan}</p>
+            </div>
+            <Modal
+              title="Choose A Plan"
+              description="Tell us about yourself! What do you do? Let’s tailor your experience so it best suits you."
+              trigger={
+                plan && plan === 'STANDARD' ? (
+                  <Button variant="secondary" size="sm">Upgrade Plan</Button>
+                ) : (
+                  <Button variant="secondary" size="sm">Change Plan</Button>
+                )
+              }
+            >
+              <SubscriptionForm plan={plan!} />
+            </Modal>
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div>
+              <h4 className="font-medium text-gray-900 dark:text-gray-100">Plan Features</h4>
+              <div className="flex gap-2 flex-col mt-2">
+                {planFeatures.map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex gap-2"
+                  >
+                    <CheckCircle2 className="text-muted-foreground" />
+                    <p className="text-muted-foreground">{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <Button variant="ghost" size="sm">Update</Button>
+          </div>
+        </div>
+      </Card>
     </div>
   )
 }

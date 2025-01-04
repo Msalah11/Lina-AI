@@ -20,31 +20,52 @@ const SideBar = ({ domains }: Props) => {
   const { expand, onExpand, page, onSignOut } = useSideBar()
 
   return (
-    <div
+    <aside
       className={cn(
-        'bg-cream dark:bg-neutral-950 h-full w-[60px] fill-mode-forwards fixed md:relative',
-        expand == undefined && '',
-        expand == true
-          ? 'animate-open-sidebar'
-          : expand == false && 'animate-close-sidebar'
+        'fixed left-0 top-0 z-40 h-screen transition-all duration-300',
+        'border-r border-gray-200 dark:border-gray-800',
+        'bg-white dark:bg-gray-950',
+        'shadow-sm',
+        expand ? 'w-64' : 'w-16',
+        'md:relative'
       )}
     >
-      {expand ? (
-        <MaxMenu
-          domains={domains}
-          current={page!}
-          onExpand={onExpand}
-          onSignOut={onSignOut}
-        />
-      ) : (
-        <MinMenu
-          domains={domains}
-          onShrink={onExpand}
-          current={page!}
-          onSignOut={onSignOut}
-        />
-      )}
-    </div>
+      {/* Glass Effect Overlay */}
+      <div
+        className={cn(
+          'absolute inset-0 z-0',
+          'bg-gradient-to-b from-white/30 to-white/10 dark:from-gray-950/30 dark:to-gray-950/10',
+          'backdrop-blur-[2px]'
+        )}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 h-full">
+        {expand ? (
+          <MaxMenu
+            domains={domains}
+            current={page!}
+            onExpand={onExpand}
+            onSignOut={onSignOut}
+          />
+        ) : (
+          <MinMenu
+            domains={domains}
+            onShrink={onExpand}
+            current={page!}
+            onSignOut={onSignOut}
+          />
+        )}
+      </div>
+
+      {/* Bottom Gradient */}
+      <div
+        className={cn(
+          'absolute bottom-0 left-0 right-0 h-24 z-20',
+          'bg-gradient-to-t from-white to-transparent dark:from-gray-950'
+        )}
+      />
+    </aside>
   )
 }
 

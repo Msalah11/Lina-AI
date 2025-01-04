@@ -1,11 +1,10 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
-
 import React from 'react'
-
 import { LogOut, MonitorSmartphone } from 'lucide-react'
 import { MenuLogo } from '@/icons/menu-logo'
 import MenuItem from './menu-item'
 import DomainMenu from './domain-menu'
+import { cn } from '@/lib/utils'
 
 type MinMenuProps = {
   onShrink(): void
@@ -28,11 +27,13 @@ export const MinMenu = ({
   domains,
 }: MinMenuProps) => {
   return (
-    <div className="p-3 flex flex-col items-center h-full">
-      <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
+    <div className="p-3 flex flex-col items-center h-full bg-cream dark:bg-neutral-950">
+      <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer hover:text-primary transition-colors">
         <MenuLogo onClick={onShrink} />
       </span>
+
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
+        {/* Main Menu */}
         <div className="flex flex-col">
           {SIDE_BAR_MENU.map((menu, key) => (
             <MenuItem
@@ -42,22 +43,26 @@ export const MinMenu = ({
               current={current}
             />
           ))}
+          
+          {/* Domains Section */}
           <DomainMenu
             min
             domains={domains}
           />
         </div>
-        <div className="flex flex-col">
+
+        {/* Options */}
+        <div className="flex flex-col space-y-1">
           <MenuItem
             size="min"
             label="Sign out"
-            icon={<LogOut />}
+            icon={<LogOut className="h-5 w-5" />}
             onSignOut={onSignOut}
           />
           <MenuItem
             size="min"
             label="Mobile App"
-            icon={<MonitorSmartphone />}
+            icon={<MonitorSmartphone className="h-5 w-5" />}
           />
         </div>
       </div>

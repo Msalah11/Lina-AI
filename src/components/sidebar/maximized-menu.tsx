@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import DomainMenu from './domain-menu'
 import MenuItem from './menu-item'
+import { cn } from '@/lib/utils'
 
 type Props = {
   onExpand(): void
@@ -21,7 +22,7 @@ type Props = {
 
 const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
   return (
-    <div className="py-3 px-4 flex flex-col h-full">
+    <div className="py-3 px-4 flex flex-col h-full bg-cream dark:bg-neutral-950">
       <div className="flex justify-between items-center">
         <Image
           src="/images/logo.png"
@@ -36,36 +37,46 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
           height={0}
         />
         <Menu
-          className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
+          className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards hover:text-primary transition-colors"
           onClick={onExpand}
         />
       </div>
+
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
+        {/* Main Menu */}
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 mb-3">MENU</p>
-          {SIDE_BAR_MENU.map((menu, key) => (
-            <MenuItem
-              size="max"
-              {...menu}
-              key={key}
-              current={current}
-            />
-          ))}
+          <div className="space-y-1">
+            {SIDE_BAR_MENU.map((menu, key) => (
+              <MenuItem
+                size="max"
+                {...menu}
+                key={key}
+                current={current}
+              />
+            ))}
+          </div>
+
+          {/* Domains Section */}
           <DomainMenu domains={domains} />
         </div>
+
+        {/* Options */}
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 mb-3">OPTIONS</p>
-          <MenuItem
-            size="max"
-            label="Sign out"
-            icon={<LogOut />}
-            onSignOut={onSignOut}
-          />
-          <MenuItem
-            size="max"
-            label="Mobile App"
-            icon={<MonitorSmartphone />}
-          />
+          <div className="space-y-1">
+            <MenuItem
+              size="max"
+              label="Sign out"
+              icon={<LogOut className="h-5 w-5" />}
+              onSignOut={onSignOut}
+            />
+            <MenuItem
+              size="max"
+              label="Mobile App"
+              icon={<MonitorSmartphone className="h-5 w-5" />}
+            />
+          </div>
         </div>
       </div>
     </div>

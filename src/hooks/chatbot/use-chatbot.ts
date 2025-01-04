@@ -122,7 +122,6 @@ export const useChatBot = () => {
         ])
       }
 
-      console.log('🟡 RESPONSE FROM UC', uploaded.uuid)
       setOnAiTyping(true)
       const response = await onAiChatBotAssistant(
         currentBotId!,
