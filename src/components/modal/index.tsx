@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { ArrowBigLeftIcon, ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 type Props = {
@@ -38,7 +38,7 @@ const Modal = ({
                 <Image
                   src={`https://ucarecdn.com/2c9bd4ab-1f00-41df-bad2-df668f65a232/`}
                   fill
-                  alt="Corinna"
+                  alt="Lina AI"
                 />
               </div>
               <div className="text-gray-400">

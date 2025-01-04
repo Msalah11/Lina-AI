@@ -4,7 +4,7 @@ import Section from '../section-label'
 import { Card, CardContent, CardDescription } from '../ui/card'
 import { CheckCircle2, Plus } from 'lucide-react'
 import { pricingCards } from '@/constants/landing'
-import Modal from '../mondal'
+import Modal from '../modal'
 import SubscriptionForm from '../forms/settings/subscription-form'
 import Image from 'next/image'
 
