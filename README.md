@@ -6,6 +6,22 @@
 
 Lina AI is a sophisticated AI-powered chatbot platform that enables businesses to deploy intelligent conversational agents across multiple domains. Built with modern technologies and designed for scalability, Lina AI offers a powerful solution for businesses looking to enhance their customer engagement through AI.
 
+## 📸 Screenshots
+
+<div align="center">
+  <img src="screenshots/1.png" alt="Lina AI Screenshot 1" width="800"/>
+  <p><em>Landing Page - Modern and engaging user interface</em></p>
+  
+  <img src="screenshots/2.png" alt="Lina AI Screenshot 2" width="800"/>
+  <p><em>Dashboard - Powerful admin controls and analytics</em></p>
+  
+  <img src="screenshots/3.png" alt="Lina AI Screenshot 3" width="800"/>
+  <p><em>Chat Interface - Intuitive and responsive chat experience</em></p>
+  
+  <img src="screenshots/4.png" alt="Lina AI Screenshot 4" width="800"/>
+  <p><em>Settings Panel - Easy configuration and customization</em></p>
+</div>
+
 ## ✨ Features
 
 - 🌐 **Multi-Domain Support**: Deploy and manage chatbots across multiple domains from a single dashboard
