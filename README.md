@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lina AI - Intelligent Conversational AI Platform
 
-## Getting Started
+<div align="center">
+  <h3>🤖 Powerful Multi-Domain AI Chatbot Solution</h3>
+</div>
 
-First, run the development server:
+Lina AI is a sophisticated AI-powered chatbot platform that enables businesses to deploy intelligent conversational agents across multiple domains. Built with modern technologies and designed for scalability, Lina AI offers a powerful solution for businesses looking to enhance their customer engagement through AI.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🌐 **Multi-Domain Support**: Deploy and manage chatbots across multiple domains from a single dashboard
+- 🎨 **Customizable Interface**: Modern and responsive UI with customizable themes
+- 🔒 **Enterprise-Grade Security**: Robust security measures with role-based access control
+- 🔄 **Real-Time Communication**: Powered by Pusher for seamless real-time interactions
+- 🎯 **Smart Responses**: Leveraging OpenAI for intelligent and context-aware conversations
+- 📊 **Analytics Dashboard**: Comprehensive insights into chatbot performance
+- 💳 **Subscription Management**: Integrated with Stripe for seamless billing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **FullStack**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Database**: PostgreSQL
+- **Authentication**: Clerk
+- **Real-time**: Pusher
+- **AI**: OpenAI
+- **File Storage**: Upload Care
+- **Payment**: Stripe
+- **Email**: NodeMailer
 
-## Learn More
+## 🛠 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**
+   ```bash
+   git clone git@github.com:Msalah11/Lina-AI.git
+   cd Lina-AI
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Fill in all required environment variables in the `.env` file
 
-## Deploy on Vercel
+4. **Set up the database**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
+
+## 🌟 Key Features Explained
+
+- **Multi-Domain Management**: Easily configure and manage chatbots for different domains
+- **Real-Time Chat**: Instant message delivery and updates using Pusher
+- **File Handling**: Secure file uploads and management with Upload Care
+- **Payment Processing**: Subscription management with Stripe integration
+- **User Authentication**: Secure authentication flow using Clerk
+- **Email Notifications**: Automated email notifications using NodeMailer
+
+## 📝 Environment Variables
+
+Refer to `.env.example` for all required environment variables. Make sure to set up:
+- Database connection
+- OpenAI API key
+- Clerk authentication keys
+- Pusher credentials
+- Stripe API keys
+- Upload Care configuration
+- Email service credentials
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to submit issues and pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 📧 Contact
+
+For any queries or support, please reach out through:
+- GitHub Issues
+- [GitHub Repository](https://github.com/Msalah11/Lina-AI)
