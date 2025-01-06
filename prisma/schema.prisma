@@ -19,8 +19,6 @@ model User {
 
   domains Domain[]
 
-  campaign Campaign[]
-
   subscription Billings?
 }
 
@@ -37,8 +35,6 @@ model Domain {
   customer   Customer[]
   User       User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String?    @db.Uuid
-  Campaign   Campaign?  @relation(fields: [campaignId], references: [id])
-  campaignId String?    @db.Uuid
 }
 
 model ChatBot {
@@ -94,8 +90,6 @@ model Customer {
 
   chatRoom ChatRoom[]
 
-  booking Bookings[]
-
   Domain   Domain? @relation(fields: [domainId], references: [id], onDelete: Cascade)
   domainId String? @db.Uuid
 }
@@ -121,28 +115,6 @@ model ChatMessage {
   ChatRoom   ChatRoom? @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
   chatRoomId String?   @db.Uuid
   seen       Boolean   @default(false)
-}
-
-model Bookings {
-  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  date       DateTime
-  slot       String
-  email      String
-  Customer   Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  customerId String?   @db.Uuid
-  domainId   String?   @db.Uuid
-  createdAt  DateTime  @default(now())
-}
-
-model Campaign {
-  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name      String
-  customers String[]
-  domain    Domain[]
-  template  String?
-  User      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String?  @db.Uuid
-  createdAt DateTime @default(now())
 }
 
 model Product {

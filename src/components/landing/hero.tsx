@@ -32,7 +32,7 @@ function Hero() {
               alt="Lina AI"
               loading="lazy"
               className="rounded-2xl lg:rounded-[24px]"
-              src="/images/hero.webp"
+              src="/images/hero.png"
               layout="responsive"
               objectFit="cover"
               objectPosition="center"

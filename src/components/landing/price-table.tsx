@@ -55,7 +55,7 @@ function PriceTable() {
                   ))}
                 </div>
                 <Link
-                  href={`/dashbord?plan=${card.title}`}
+                  href={`/auth/register`}
                   className="bg-primary hover:bg-indigo-600 text-white hover:text-white transition border-primary hover:border-indigo-600 border-2 p-2 w-full text-center font-bold rounded-md"
                 >
                   Get Started

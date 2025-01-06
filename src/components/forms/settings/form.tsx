@@ -1,33 +1,33 @@
-"use client";
-import { Separator } from "@/components/ui/separator";
-import { useSettings } from "@/hooks/settings/use-settings";
-import React from "react";
-import { DomainUpdate } from "./domain-update";
-import CodeSnippet from "./code-snippet";
-import PremiumBadge from "@/icons/premium-badge";
-import EditChatbotIcon from "./edit-chatbot-icon";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/loader";
+"use client"
+import { Separator } from "@/components/ui/separator"
+import { useSettings } from "@/hooks/settings/use-settings"
+import React from "react"
+import { DomainUpdate } from "./domain-update"
+import CodeSnippet from "./code-snippet"
+import PremiumBadge from "@/icons/premium-badge"
+import EditChatbotIcon from "./edit-chatbot-icon"
+import dynamic from "next/dynamic"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Loader } from "@/components/loader"
+import { Settings, Bot, Trash2 } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 const WelcomeMessage = dynamic(
   () => import("./greetings-message").then((props) => props.default),
-  {
-    ssr: false,
-  }
-);
+  { ssr: false }
+)
 
 type Props = {
-  id: string;
-  name: string;
-  plan: "STANDARD" | "PRO" | "ULTIMATE";
+  id: string
+  name: string
+  plan: "STANDARD" | "PRO" | "ULTIMATE"
   chatBot: {
-    id: string;
-    icon: string | null;
-    welcomeMessage: string | null;
-  } | null;
-};
+    id: string
+    icon: string | null
+    welcomeMessage: string | null
+  } | null
+}
 
 const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
   const {
@@ -37,29 +37,40 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
     onDeleteDomain,
     deleting,
     loading,
-  } = useSettings(id);
+  } = useSettings(id)
+
   return (
-    <form
-      className="flex flex-col gap-8 pb-10 px-3"
-      onSubmit={onUpdateSettings}
-    >
-      <div className="flex flex-col gap-3">
-        <h2 className="font-bold text-2xl">Domain Settings</h2>
-        <Separator orientation="horizontal" />
-        <DomainUpdate name={name} register={register} errors={errors} />
-        <CodeSnippet id={id} />
+    <form className="space-y-8" onSubmit={onUpdateSettings}>
+      {/* Domain Settings Section */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <Settings className="h-6 w-6 text-primary" />
+          <h2 className="text-2xl font-semibold tracking-tight">Domain Settings</h2>
+        </div>
+        <Separator />
+        <div className="grid gap-6">
+          <DomainUpdate name={name} register={register} errors={errors} />
+          <CodeSnippet id={id} />
+        </div>
       </div>
-      <div className="flex flex-col gap-3 mt-5">
-        <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-2xl">Chatbot Settings</h2>
-          <div className="flex gap-1 bg-cream rounded-full px-3 py-1 text-xs items-center font-bold">
+
+      {/* Chatbot Settings Section */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Bot className="h-6 w-6 text-primary" />
+            <h2 className="text-2xl font-semibold tracking-tight">Chatbot Settings</h2>
+          </div>
+          <div className="flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
             <PremiumBadge />
-            Premium
+            <span className="text-xs font-semibold text-primary">Premium</span>
           </div>
         </div>
-        <Separator orientation="horizontal" />
-        <div className="grid md:grid-cols-2">
-          <div className="col-span-1 flex flex-col gap-5 order-last md:order-first">
+        <Separator />
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Settings Controls */}
+          <div className="space-y-6 order-last md:order-first">
             <EditChatbotIcon
               chatBot={chatBot}
               register={register}
@@ -71,36 +82,50 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
               errors={errors}
             />
           </div>
-          <div className="col-span-1 relative ">
-            <Image
-              src="/images/mobile.png"
-              className="sticky top-0 border border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-700 rounded-2xl lg:rounded-[32px] "
-              alt="bot-ui"
-              loading="lazy"
-              layout="responsive"
-              objectFit="cover"
-              objectPosition="center"
-              width={530}
-              height={769}
-            />
+
+          {/* Preview */}
+          <div className="relative">
+            <div className="sticky  ">
+              <Image
+                src="/images/mobile.png"
+                className="rounded-2xl lg:rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm"
+                alt="bot-ui"
+                priority
+                width={250}
+                height={769}
+              />
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex gap-5 justify-end">
-        <Button
-          onClick={onDeleteDomain}
-          variant="destructive"
-          type="button"
-          className="px-10 h-[50px]"
-        >
-          <Loader loading={deleting}>Delete Domain</Loader>
-        </Button>
-        <Button type="submit" className="w-[100px] h-[50px]">
-          <Loader loading={loading}>Save</Loader>
-        </Button>
+
+      {/* Action Buttons */}
+      <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-800">
+        <Alert variant="destructive" className="max-w-xl flex gap-2 items-center pt-4">
+          <Trash2 className="h-4 w-4" />
+          <AlertDescription>
+            Deleting a domain cannot be undone. All data will be permanently removed.
+          </AlertDescription>
+        </Alert>
+
+        <div className="flex gap-4">
+          <Button
+            onClick={onDeleteDomain}
+            variant="destructive"
+            type="button"
+            className="gap-2"
+          >
+            <Trash2 className="h-4 w-4" />
+            <Loader loading={deleting}>Delete Domain</Loader>
+          </Button>
+          
+          <Button type="submit" className="min-w-[100px]">
+            <Loader loading={loading}>Save Changes</Loader>
+          </Button>
+        </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default SettingsForm;
+export default SettingsForm

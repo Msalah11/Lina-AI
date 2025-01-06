@@ -18,13 +18,6 @@ function NavBar() {
           height={0}
         />
       </div>
-      <ul className="gap-5 justify-between self-stretch my-auto text-sm leading-5 text-neutral-700 max-md:flex-wrap max-md:max-w-full font-normal hidden md:flex">
-        <li>Home</li>
-        <li>Pricing</li>
-        <li>News Room</li>
-        <li>Features</li>
-        <li>Contact us</li>
-      </ul>
       <Link
         href="/dashboard"
         className="bg-primary hover:bg-indigo-600 transition px-4 py-2 rounded-sm text-white"
