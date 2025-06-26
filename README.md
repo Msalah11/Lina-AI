@@ -34,7 +34,7 @@ Lina AI is a sophisticated AI-powered chatbot platform that enables businesses t
 
 ## 🚀 Tech Stack
 
-- **FullStack**: Next.js 14, React, TypeScript, Tailwind CSS
+- **FullStack**: Next.js 14, TypeScript, Tailwind CSS
 - **Database**: PostgreSQL
 - **Authentication**: Clerk
 - **Real-time**: Pusher
